@@ -1,8 +1,16 @@
-%define libxprintutil %mklibname xprintutil 1
-Name: libxprintutil
+%define name	libxprintutil
+%define version	1.0.1
+%define release	%mkrel 4
+
+%define major		1
+%define libname		%mklibname xprintutil %{major}
+%define	develname	%mklibname xprintutil -d
+%define staticname	%mklibname xprintutil -d -s
+
+Name: %{name}
 Summary:  The XprintUtil Library
-Version: 1.0.1
-Release: %mkrel 3
+Version: %{version}
+Release: %{release}
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -21,38 +29,38 @@ The XprintUtil Library
 
 #-----------------------------------------------------------
 
-%package -n %{libxprintutil}
+%package -n %{libname}
 Summary:  The XprintUtil Library
 Group: Development/X11
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
-%description -n %{libxprintutil}
+%description -n %{libname}
 The XprintUtil Library
 
 #-----------------------------------------------------------
 
-%package -n %{libxprintutil}-devel
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 
-Requires: %{libxprintutil} = %{version}
+Requires: %{libname} = %{version}
 Requires: libx11-devel >= 1.0.0
 Requires: libxt-devel >= 1.0.0
 Requires: x11-proto-devel >= 1.0.0
-Provides: libxprintutil-devel = %{version}-%{release}
-
+Provides: %{name}-devel = %{version}-%{release}
 Conflicts: libxorg-x11-devel < 7.0
+Obsoletes: %{mklibname xprintutil 1 -d}
 
-%description -n %{libxprintutil}-devel
+%description -n %{develname}
 Development files for %{name}
 
-%pre -n %{libxprintutil}-devel
+%pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxprintutil}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libXprintUtil.so
 %{_libdir}/libXprintUtil.la
@@ -61,18 +69,18 @@ fi
 
 #-----------------------------------------------------------
 
-%package -n %{libxprintutil}-static-devel
+%package -n %{staticname}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxprintutil}-devel = %{version}
+Requires: %{develname} = %{version}
 Provides: libxprintutil-static-devel = %{version}-%{release}
-
 Conflicts: libxorg-x11-static-devel < 7.0
+Obsoletes: %{mklibname xprintutil 1 -d -s}
 
-%description -n %{libxprintutil}-static-devel
+%description -n %{staticname}
 Static development files for %{name}
 
-%files -n %{libxprintutil}-static-devel
+%files -n %{staticname}
 %defattr(-,root,root)
 %{_libdir}/libXprintUtil.a
 
@@ -94,12 +102,10 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libxprintutil}
+%files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libXprintUtil.so.1
-%{_libdir}/libXprintUtil.so.1.0.0
-
+%{_libdir}/libXprintUtil.so.%{major}*
 
