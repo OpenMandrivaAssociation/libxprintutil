@@ -1,6 +1,6 @@
 %define name	libxprintutil
 %define version	1.0.1
-%define release	%mkrel 7
+%define release	%mkrel 8
 
 %define major		1
 %define libname		%mklibname xprintutil %{major}
