@@ -1,6 +1,6 @@
 %define name	libxprintutil
 %define version	1.0.1
-%define release	%mkrel 12
+%define release	%mkrel 13
 
 %define major		1
 %define libname		%mklibname xprintutil %{major}
@@ -54,11 +54,6 @@ Obsoletes: %{mklibname xprintutil 1 -d}
 
 %description -n %{develname}
 Development files for %{name}
-
-%pre -n %{develname}
-if [ -h %{_includedir}/X11 ]; then
-	rm -f %{_includedir}/X11
-fi
 
 %files -n %{develname}
 %defattr(-,root,root)
