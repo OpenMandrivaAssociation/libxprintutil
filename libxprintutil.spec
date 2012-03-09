@@ -58,7 +58,6 @@ Development files for %{name}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libXprintUtil.so
-%{_libdir}/libXprintUtil.la
 %{_libdir}/pkgconfig/xprintutil.pc
 %{_includedir}/X11/XprintUtil/xprintutil.h
 
@@ -77,7 +76,7 @@ Static development files for %{name}
 
 %files -n %{staticname}
 %defattr(-,root,root)
-%{_libdir}/libXprintUtil.a
+%{_libdir}/libXprintUtil.*a
 
 #-----------------------------------------------------------
 
