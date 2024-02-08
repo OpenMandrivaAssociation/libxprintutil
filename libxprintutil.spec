@@ -11,7 +11,7 @@ Release: 17
 Group:   Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
+Source0: https://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
 
 BuildRequires: pkgconfig(x11) >= 1.0.0
 BuildRequires: pkgconfig(xau) >= 1.0.0
@@ -60,19 +60,19 @@ Development files for %{name}
 
 #-----------------------------------------------------------
 
-%package -n %{staticname}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: %{develname} = %{version}
-Provides: libxprintutil-static-devel = %{version}-%{release}
-Conflicts: libxorg-x11-static-devel < 7.0
-Obsoletes: %{mklibname xprintutil 1 -d -s}
+#package -n %{staticname}
+#Summary: Static development files for %{name}
+#Group: Development/X11
+#Requires: %{develname} = %{version}
+#Provides: libxprintutil-static-devel = %{version}-%{release}
+#Conflicts: libxorg-x11-static-devel < 7.0
+#Obsoletes: %{mklibname xprintutil 1 -d -s}
 
-%description -n %{staticname}
-Static development files for %{name}
-
-%files -n %{staticname}
-%defattr(-,root,root)
+#description -n %{staticname}
+#Static development files for %{name}
+#
+#files -n %{staticname}
+#defattr(-,root,root)
 #{_libdir}/libXprintUtil.*a
 
 #-----------------------------------------------------------
