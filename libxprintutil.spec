@@ -1,20 +1,21 @@
 %define major		1
-%define libname		%mklibname xprintutil %{major}
+%define libname		%mklibname xprintutil
+%define oldlibname	%mklibname xprintutil 1
 %define	develname	%mklibname xprintutil -d
 %define staticname	%mklibname xprintutil -d -s
 
 Name:    libxprintutil
 Summary: The XprintUtil Library
 Version: 1.0.1
-Release: 16
+Release: 17
 Group:   Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
+Source0: https://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
 
 BuildRequires: pkgconfig(x11) >= 1.0.0
 BuildRequires: pkgconfig(xau) >= 1.0.0
-BuildRequires: libxp-devel >= 1.0.0
+BuildRequires: pkgconfig(xp) >= 1.0.0
 BuildRequires: pkgconfig(xt) >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
@@ -28,6 +29,7 @@ The XprintUtil Library
 Summary:  The XprintUtil Library
 Group: Development/X11
 Conflicts: libxorg-x11 < 7.0
+%rename %{oldlibname}
 Provides: %{name} = %{version}
 
 %description -n %{libname}
@@ -58,20 +60,20 @@ Development files for %{name}
 
 #-----------------------------------------------------------
 
-%package -n %{staticname}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: %{develname} = %{version}
-Provides: libxprintutil-static-devel = %{version}-%{release}
-Conflicts: libxorg-x11-static-devel < 7.0
-Obsoletes: %{mklibname xprintutil 1 -d -s}
+#package -n %{staticname}
+#Summary: Static development files for %{name}
+#Group: Development/X11
+#Requires: %{develname} = %{version}
+#Provides: libxprintutil-static-devel = %{version}-%{release}
+#Conflicts: libxorg-x11-static-devel < 7.0
+#Obsoletes: %{mklibname xprintutil 1 -d -s}
 
-%description -n %{staticname}
-Static development files for %{name}
-
-%files -n %{staticname}
-%defattr(-,root,root)
-%{_libdir}/libXprintUtil.*a
+#description -n %{staticname}
+#Static development files for %{name}
+#
+#files -n %{staticname}
+#defattr(-,root,root)
+#{_libdir}/libXprintUtil.*a
 
 #-----------------------------------------------------------
 
