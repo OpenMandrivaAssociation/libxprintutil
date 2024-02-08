@@ -42,8 +42,8 @@ Summary: Development files for %{name}
 Group: Development/X11
 
 Requires: %{libname} = %{version}
-Requires: libx11-devel >= 1.0.0
-Requires: libxt-devel >= 1.0.0
+Requires: pkgconfig(x11) >= 1.0.0
+Requires: pkgconfig(xt) >= 1.0.0
 Requires: x11-proto-devel >= 1.0.0
 Provides: %{name}-devel = %{version}-%{release}
 Conflicts: libxorg-x11-devel < 7.0
