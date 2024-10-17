@@ -10,7 +10,7 @@ Version: 1.0.1
 Release: 17
 Group:   Development/X11
 License: MIT
-URL: http://xorg.freedesktop.org
+URL: https://xorg.freedesktop.org
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
 
 BuildRequires: pkgconfig(x11) >= 1.0.0
