@@ -13,6 +13,11 @@ License: MIT
 URL: https://xorg.freedesktop.org
 Source0: https://xorg.freedesktop.org/releases/individual/lib/libXprintUtil-%{version}.tar.bz2
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: pkgconfig(x11) >= 1.0.0
 BuildRequires: pkgconfig(xau) >= 1.0.0
 BuildRequires: pkgconfig(xp) >= 1.0.0
